@@ -1,19 +1,19 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
+    static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        System.out.println("Hello! \nThis is your menu:");
-        System.out.println(" 1. View all the vehicles sorted by manufacturing year");
-        System.out.println(" 2. View all the vehicles sorted by manufacturing brand");
-        System.out.println(" 3. View the historic of all the rented vehicles  and their users");
-        System.out.println(" 4. Search for a vehicle by type");
-        System.out.println(" 5. View the historic of all the rented vehicles  and their users");
-        System.out.println(" 6. Rent a vehicle");
-        System.out.println(" 7. View all the rented vehicles of a specific user");
+        List<Vehicle> allVehicles = new ArrayList<Vehicle>();
+
+        showMenu();
 
         int choice=validationInput();
 
@@ -21,12 +21,14 @@ public class Main {
         {
             case 1:
             {
-                System.out.println("\nIt is going to be implemented - 1 ...");
+                Collections.sort(allVehicles,new Vehicle.ManufacturingYearComparator());
+                showAllVehicle(allVehicles);
                 break;
             }
             case 2:
             {
-                System.out.println("\nIt is going to be implemented - 2 ...");
+                Collections.sort(allVehicles,new Vehicle.BrandComparator());
+                showAllVehicle(allVehicles);
                 break;
             }
             case 3:
@@ -36,7 +38,20 @@ public class Main {
             }
             case 4:
             {
-                System.out.println("\nIt is going to be implemented -4 ...");
+                System.out.println("What type of vehicles do you want to search?");
+                String desiredType = scan.nextLine();
+                Collections.sort(allVehicles,new Vehicle.TypeComparator());
+
+                for(Vehicle currentVehicle : allVehicles ) {
+
+                    if(currentVehicle.getType().toString().equals(desiredType)) {
+
+                        System.out.println(currentVehicle);
+                    }
+                    else {
+                        break;
+                    }
+                }
                 break;
             }
             case 5:
@@ -57,9 +72,19 @@ public class Main {
         }
     }
 
+    public static void showMenu() {
+        System.out.println("Hello! \nThis is your menu:");
+        System.out.println(" 1. View all the vehicles sorted by manufacturing year");
+        System.out.println(" 2. View all the vehicles sorted by manufacturing brand");
+        System.out.println(" 3. View the historic of all the rented vehicles  and their users");
+        System.out.println(" 4. Search for a vehicle by type");
+        System.out.println(" 5. View the historic of all the rented vehicles  and their users");
+        System.out.println(" 6. Rent a vehicle");
+        System.out.println(" 7. View all the rented vehicles of a specific user");
+    }
+
     public static int validationInput() {
-        Scanner scan = new Scanner(System.in);
-        boolean isValid = true;
+        boolean isValid;
         int numberTries = -1;
         int input = 0;
 
@@ -78,8 +103,15 @@ public class Main {
                 isValid = false;
             }
         }
-        while ((input < 0) || (input > 7) || (isValid == false));
+        while ((input < 0) || (input > 7) || (!isValid));
 
         return  input;
+    }
+
+    public static void showAllVehicle(List<Vehicle> allVehicles) {
+        for(Vehicle currentVehicle : allVehicles)
+        {
+            System.out.println(currentVehicle);
+        }
     }
 }

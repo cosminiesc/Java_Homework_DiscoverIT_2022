@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Comparator;
+
 public class Vehicle {
 
     //fields
@@ -37,5 +39,56 @@ public class Vehicle {
 
     public void setColour(String colour) {
         this.colour = colour;
+    }
+
+    //getters
+    public int getManufacturingYear() {
+        return manufacturingYear;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    //classes used in sorting the allVehicles in Main
+    public  static class ManufacturingYearComparator implements Comparator<Vehicle>
+    {
+
+        @Override
+        public int compare(Vehicle v1, Vehicle v2) {
+            return v1.getManufacturingYear()- v2.getManufacturingYear();
+        }
+    }
+
+    public static class BrandComparator implements  Comparator<Vehicle>
+    {
+
+        @Override
+        public int compare(Vehicle v1, Vehicle v2) {
+            return v1.getBrand().compareTo(v2.getBrand());
+        }
+    }
+    public static class TypeComparator implements Comparator<Vehicle>
+    {
+
+        @Override
+        public int compare(Vehicle v1, Vehicle v2) {
+            return v1.getType().compareTo(v2.getType());
+        }
+    }
+
+    //shows each element from allVehicles in a structured way
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "registrationNumber='" + registrationNumber + '\'' +
+                ", manufacturingYear=" + manufacturingYear +
+                ", brand='" + brand + '\'' +
+                ", colour='" + colour + '\'' +
+                '}';
     }
 }
