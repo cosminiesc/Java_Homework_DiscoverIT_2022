@@ -54,16 +54,15 @@ public class Vehicle {
         return type;
     }
 
+    /*
     //classes used in sorting the allVehicles in Main
     public  static class ManufacturingYearComparator implements Comparator<Vehicle>
     {
-
         @Override
         public int compare(Vehicle v1, Vehicle v2) {
             return v1.getManufacturingYear()- v2.getManufacturingYear();
         }
     }
-
     public static class BrandComparator implements  Comparator<Vehicle>
     {
 
@@ -80,6 +79,7 @@ public class Vehicle {
             return v1.getType().compareTo(v2.getType());
         }
     }
+    */
 
     //shows each element from allVehicles in a structured way
     @Override

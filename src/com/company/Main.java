@@ -1,9 +1,7 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -11,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Vehicle> allVehicles = new ArrayList<Vehicle>();
+        List<Vehicle> allVehicles = new ArrayList<>();
 
         showMenu();
 
@@ -21,14 +19,23 @@ public class Main {
         {
             case 1:
             {
-                Collections.sort(allVehicles,new Vehicle.ManufacturingYearComparator());
-                showAllVehicle(allVehicles);
+                /*Collections.sort(allVehicles,new Vehicle.ManufacturingYearComparator());*/
+
+                List<Vehicle> sortedVehiclesByYear=allVehicles.stream()
+                        .sorted(Comparator.comparing(Vehicle::getManufacturingYear))
+                        .collect(Collectors.toList());
+                showAllVehicle(sortedVehiclesByYear);
                 break;
             }
             case 2:
             {
-                Collections.sort(allVehicles,new Vehicle.BrandComparator());
-                showAllVehicle(allVehicles);
+                /*Collections.sort(allVehicles,new Vehicle.BrandComparator());*/
+
+                List<Vehicle> sortedVehiclesByBrand=allVehicles.stream()
+                        .sorted(Comparator.comparing((Vehicle::getBrand)))
+                        .collect(Collectors.toList());
+
+                showAllVehicle(sortedVehiclesByBrand);
                 break;
             }
             case 3:
@@ -40,9 +47,12 @@ public class Main {
             {
                 System.out.println("What type of vehicles do you want to search?");
                 String desiredType = scan.nextLine();
-                Collections.sort(allVehicles,new Vehicle.TypeComparator());
 
-                for(Vehicle currentVehicle : allVehicles ) {
+                List<Vehicle> sortedVehiclesByType=allVehicles.stream()
+                        .sorted(Comparator.comparing(Vehicle::getType))
+                        .collect(Collectors.toList());
+
+                for(Vehicle currentVehicle : sortedVehiclesByType ) {
 
                     if(currentVehicle.getType().toString().equals(desiredType)) {
 
