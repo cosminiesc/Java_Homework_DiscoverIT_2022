@@ -17,6 +17,10 @@ public class Main {
         addVehiclesFromFile(allVehicles);
         addPeopleFromFile(allPeople);
 
+        for(Person p : allPeople){
+            System.out.println(p);
+        }
+
         showMenu();
 
         int choice=validationInput();
@@ -125,12 +129,6 @@ public class Main {
         for(Vehicle currentVehicle : allVehicles)
         {
             System.out.println(currentVehicle);
-        }
-    }
-
-    public static void showAllPeoplr(List<Person> allPeople){
-        for(Person currentPerson : allPeople){
-            System.out.println(currentPerson);
         }
     }
 

@@ -10,7 +10,7 @@ public class Person {
     private Gender gender;
     private int emittedYearOfDriverLicense;
 
-    //constructors
+    //constructor
     public Person(String personalIdentificationNumber, String firstName, String lastName, String dateOfBirth,Gender gender, int emittedYearOfDriverLicense) {
         this.personalIdentificationNumber = personalIdentificationNumber;
         this.firstName = firstName;
