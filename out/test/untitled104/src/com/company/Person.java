@@ -10,7 +10,7 @@ public class Person {
     private Gender gender;
     private int emittedYearOfDriverLicense;
 
-    //constructor
+    //constructors
     public Person(String personalIdentificationNumber, String firstName, String lastName, String dateOfBirth,Gender gender, int emittedYearOfDriverLicense) {
         this.personalIdentificationNumber = personalIdentificationNumber;
         this.firstName = firstName;
@@ -29,24 +29,48 @@ public class Person {
     }
 
     //setters
+    public String getPersonalIdentificationNumber() {
+        return personalIdentificationNumber;
+    }
+
     public void setPersonalIdentificationNumber(String personalIdentificationNumber) {
         this.personalIdentificationNumber = personalIdentificationNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public int getEmittedYearOfDriverLicense() {
+        return emittedYearOfDriverLicense;
     }
 
     public void setEmittedYearOfDriverLicense(int emittedYearOfDriverLicense) {
